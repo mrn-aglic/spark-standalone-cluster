@@ -1,0 +1,17 @@
+spark-worker-{worker_num}:
+    image: spark-image
+    container_name: spark-worker-{worker_num}
+    entrypoint: ['./entrypoint.sh', 'worker', '{port}']
+    depends_on:
+      - spark-master
+    environment:
+      - SPARK_PUBLIC_DNS=localhost
+    env_file:
+      - .env.spark
+    volumes:
+      - ./data:/opt/spark/data
+      - ./spark_apps:/opt/spark/apps
+      - spark-logs:/opt/spark/spark-events
+    ports:
+      - "{port}:{port}"
+

@@ -9,7 +9,10 @@ then
   start-master.sh -p 7077
 elif [ "$SPARK_WORKLOAD" == "worker" ];
 then
-  start-worker.sh spark://spark-master:7077
+  WORKER_PORT=${2:-8081}
+  echo $WORKER_PORT
+
+  start-worker.sh spark://spark-master:7077 --webui-port $WORKER_PORT
 elif [ "$SPARK_WORKLOAD" == "history" ]
 then
   start-history-server.sh

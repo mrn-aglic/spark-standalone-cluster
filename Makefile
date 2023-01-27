@@ -13,6 +13,9 @@ down:
 run:
 	make down && docker-compose up
 
+run-generated:
+	make down && sh ./generate-docker-compose.sh 3 && docker compose -f docker-compose.generated.yml up
+
 run-scaled:
 	make down && docker-compose up --scale spark-worker=3
 

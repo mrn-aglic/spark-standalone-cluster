@@ -30,7 +30,27 @@ make build
 ```
 
 ## Web UIs
-TODO
+The master node can be accessed on:
+`localhost:9090`. 
+The spark history server is accessible through:
+`localhost:18080`.
+
+# Fixing the links on the Spark master UI
+Since we are running the spark cluster on docker, the
+worker related links do not work on the UI.
+To fix this I created a generate-docker-compose script
+that generates the docker compose file (called 
+docker-compose.generated.yml) with the desired number of 
+workers where each worker has assigned and exposed port
+number.
+
+To bring up this cluster, you can just run:
+```shell
+make run-generated
+```
+
+By default, the command will launch a Spark cluster with
+a master, history server and 3 worker nodes. 
 
 
 # Stories published on Medium
