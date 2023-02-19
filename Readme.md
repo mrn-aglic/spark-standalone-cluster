@@ -52,6 +52,12 @@ make run-generated
 By default, the command will launch a Spark cluster with
 a master, history server and 3 worker nodes. 
 
+# Jupyter lab
+After some time, I decided to add a jupyterlab service.
+For reference see this [GitHub repo](https://github.com/cluster-apps-on-docker/spark-standalone-cluster-on-docker).
+
+Jupyterlab will run on port 8888. There is a small
+example notebook on how to get started. 
 
 # Stories published on Medium
 1. Setting up a standalone Spark cluster can be found [here](https://medium.com/@MarinAgli1/setting-up-a-spark-standalone-cluster-on-docker-in-layman-terms-8cbdc9fdd14b).

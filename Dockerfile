@@ -31,11 +31,16 @@ RUN curl https://dlcdn.apache.org/spark/spark-{$SPARK_VERSION}/spark-${SPARK_VER
  && rm -rf spark-${SPARK_VERSION}-bin-hadoop3.tgz
 
 
-FROM spark-base as pyspark
+
+FROM spark-base as pyspark-base
 
 # Install python deps
 COPY requirements/requirements.txt .
 RUN pip3 install -r requirements.txt
+
+
+
+FROM pyspark-base as pyspark
 
 # Setup Spark related environment variables
 ENV PATH="/opt/spark/sbin:/opt/spark/bin:${PATH}"
@@ -56,3 +61,23 @@ ENV PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
 COPY entrypoint.sh .
 
 ENTRYPOINT ["./entrypoint.sh"]
+
+
+
+FROM pyspark-base as jupyter-notebook
+
+ARG pyspark-version=3.3.2
+ARG jupyterlab_version=3.6.1
+
+RUN mkdir /opt/notebooks
+
+RUN apt-get update -y && \
+    apt-get install -y python3-pip python3-dev && \
+    pip3 install --upgrade pip && \
+    pip3 install wget jupyterlab==${jupyterlab_version}
+
+
+WORKDIR /opt/notebooks
+
+CMD jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=
+

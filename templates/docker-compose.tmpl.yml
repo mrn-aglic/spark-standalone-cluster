@@ -1,11 +1,26 @@
 version: '3.8'
 
 services:
+  spark-jupyter:
+    image: spark-jupyter
+    build:
+      context: .
+      target: jupyter-notebook
+    container_name: spark-jupyter
+    volumes:
+      - ./notebooks:/opt/notebooks
+      - spark-logs:/opt/spark/spark-events
+    ports:
+      - '8888:8888'
+      - '4040:4040'
+
   spark-master:
     container_name: spark-master
-    build: .
+    build:
+      context: .
+      target: pyspark
     image: spark-image
-    entrypoint: ['./entrypoint.sh', 'master']
+    entrypoint: [ './entrypoint.sh', 'master' ]
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080" ]
       interval: 5s
@@ -15,6 +30,7 @@ services:
       - ./data:/opt/spark/data
       - ./spark_apps:/opt/spark/apps
       - spark-logs:/opt/spark/spark-events
+      - ./notebooks:/opt/notebooks
     env_file:
       - .env.spark
     ports:

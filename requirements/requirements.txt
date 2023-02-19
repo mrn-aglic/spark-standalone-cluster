@@ -15,18 +15,18 @@ decorator==5.1.1
     # via ipython
 executing==1.2.0
     # via stack-data
-ipython==8.7.0
+ipython==8.10.0
     # via -r requirements/requirements.in
 jedi==0.18.2
     # via ipython
 matplotlib-inline==0.1.6
     # via ipython
-numpy==1.24.0
+numpy==1.24.2
     # via
     #   -r requirements/requirements.in
     #   pandas
     #   pyarrow
-pandas==1.5.2
+pandas==1.5.3
     # via -r requirements/requirements.in
 parso==0.8.3
     # via jedi
@@ -42,23 +42,23 @@ pure-eval==0.2.2
     # via stack-data
 py4j==0.10.9.5
     # via pyspark
-pyarrow==10.0.1
+pyarrow==11.0.0
     # via -r requirements/requirements.in
-pygments==2.13.0
+pygments==2.14.0
     # via ipython
-pyspark==3.3.1
+pyspark==3.3.2
     # via -r requirements/requirements.in
 python-dateutil==2.8.2
     # via pandas
-pytz==2022.7
+pytz==2022.7.1
     # via pandas
 six==1.16.0
     # via python-dateutil
 stack-data==0.6.2
     # via ipython
-traitlets==5.8.0
+traitlets==5.9.0
     # via
     #   ipython
     #   matplotlib-inline
-wcwidth==0.2.5
+wcwidth==0.2.6
     # via prompt-toolkit
