@@ -1,6 +1,6 @@
 FROM python:3.10-bullseye as spark-base
 
-ARG SPARK_VERSION=3.3.2
+ARG SPARK_VERSION=3.4.0
 
 # Install tools required by the OS
 RUN apt-get update && \
@@ -66,7 +66,6 @@ ENTRYPOINT ["./entrypoint.sh"]
 
 FROM pyspark-base as jupyter-notebook
 
-ARG pyspark-version=3.3.2
 ARG jupyterlab_version=3.6.1
 
 RUN mkdir /opt/notebooks

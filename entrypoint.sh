@@ -10,7 +10,7 @@ then
 elif [ "$SPARK_WORKLOAD" == "worker" ];
 then
   WORKER_PORT=${2:-8081}
-  echo $WORKER_PORT
+  echo "$WORKER_PORT"
 
   start-worker.sh spark://spark-master:7077 --webui-port $WORKER_PORT
 elif [ "$SPARK_WORKLOAD" == "history" ]
