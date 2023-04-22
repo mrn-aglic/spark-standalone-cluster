@@ -67,5 +67,21 @@ services:
     ports:
       - '8081:8081'
 
+  spark-connect:
+    image: spark-image
+    container_name: spark-connect
+    entrypoint: ['./entrypoint.sh', 'connect']
+    depends_on:
+      - spark-master
+    env_file:
+      - .env.spark
+    volumes:
+      - ./data:/opt/spark/data
+      - ./spark_apps:/opt/spark/apps
+      - spark-logs:/opt/spark/spark-events
+      - ./notebooks:/opt/notebooks
+    ports:
+      - '15000:15000'
+
 volumes:
   spark-logs:

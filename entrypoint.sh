@@ -16,4 +16,7 @@ then
 elif [ "$SPARK_WORKLOAD" == "history" ]
 then
   start-history-server.sh
+elif [ "$SPARK_WORKLOAD" == "connect" ]
+then
+  start-connect-server.sh --packages org.apache.spark:spark-connect_2.12:3.4.0
 fi
