@@ -36,6 +36,7 @@ services:
     ports:
       - '9090:8080'
       - '7077:7077'
+#      - '15000:15000'
 
 
   spark-history-server:
@@ -82,6 +83,8 @@ services:
       - ./notebooks:/opt/notebooks
     ports:
       - '15000:15000'
+      - '15001:15001'
+      - '15002:15002'
 
 volumes:
   spark-logs:

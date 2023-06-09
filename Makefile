@@ -7,6 +7,9 @@ build-nc:
 build-progress:
 	docker compose build --no-cache --progress=plain
 
+clean:
+	docker compose down --rmi="all" --volumes
+
 down:
 	docker compose down --volumes --remove-orphans
 

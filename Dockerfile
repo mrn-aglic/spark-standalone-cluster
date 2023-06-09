@@ -68,7 +68,7 @@ FROM pyspark-base as jupyter-notebook
 
 ARG jupyterlab_version=3.6.1
 
-ENV SPARK_REMOTE="sc://localhost"
+ENV SPARK_REMOTE="sc://spark-master"
 RUN unset SPARK_MASTER
 
 RUN mkdir /opt/notebooks
