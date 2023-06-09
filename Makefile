@@ -1,5 +1,5 @@
 build:
-	docker-compose build
+	docker compose build
 
 build-nc:
 	docker compose build --no-cache
@@ -30,6 +30,9 @@ stop:
 
 submit:
 	docker exec spark-master spark-submit --master spark://spark-master:7077 --deploy-mode client ./apps/$(app)
+
+submit-py-pi:
+	docker exec spark-master spark-submit --master spark://spark-master:7077 /opt/spark/examples/src/main/python/pi.py
 
 rm-results:
 	rm -r data/results/*
