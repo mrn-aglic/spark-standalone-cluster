@@ -3,7 +3,7 @@ default_language_version:
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0
+    rev: v4.4.0
     hooks:
       - id: trailing-whitespace
         exclude: ^.*\.md$
@@ -15,7 +15,7 @@ repos:
       - id: check-merge-conflict
 
   - repo: https://github.com/jorisroovers/gitlint
-    rev: v0.17.0
+    rev: v0.19.1
     hooks:
       - id: gitlint
 
@@ -33,7 +33,7 @@ repos:
         additional_dependencies: ["toml"]
 
   - repo: https://github.com/ambv/black
-    rev: 22.8.0
+    rev: 23.3.0
     hooks:
       - id: black
 
@@ -45,11 +45,11 @@ repos:
         args: ["--disable=import-error,no-name-in-module"]
 
   - repo: https://github.com/PyCQA/pydocstyle
-    rev: 6.1.1
+    rev: 6.3.0
     hooks:
       - id: pydocstyle
 
   - repo: https://github.com/codingjoe/relint
-    rev: 1.4.0
+    rev: 3.0.0
     hooks:
       - id: relint
