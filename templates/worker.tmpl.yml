@@ -14,4 +14,3 @@ spark-worker-{worker_num}:
       - spark-logs:/opt/spark/spark-events
     ports:
       - "{port}:{port}"
-

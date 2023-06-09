@@ -1,4 +1,4 @@
-FROM python:3.10-bullseye as spark-base
+FROM python:3.11-bullseye as spark-base
 
 ARG SPARK_VERSION=3.4.0
 
@@ -66,7 +66,7 @@ ENTRYPOINT ["./entrypoint.sh"]
 
 FROM pyspark-base as jupyter-notebook
 
-ARG jupyterlab_version=3.6.1
+ARG jupyterlab_version=4.0.1
 
 ENV SPARK_REMOTE="sc://spark-master"
 RUN unset SPARK_MASTER
@@ -82,4 +82,3 @@ RUN apt-get update -y && \
 WORKDIR /opt/notebooks
 
 CMD jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=
-
