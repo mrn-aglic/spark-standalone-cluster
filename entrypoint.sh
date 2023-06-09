@@ -6,7 +6,9 @@ echo "SPARK_WORKLOAD: $SPARK_WORKLOAD"
 
 if [ "$SPARK_WORKLOAD" == "master" ];
 then
-  start-master.sh -p 7077
+  exec start-master.sh -p 7077
+#  exec  start-connect-server.sh --packages org.apache.spark:spark-connect_2.12:3.4.0
+
 elif [ "$SPARK_WORKLOAD" == "worker" ];
 then
   WORKER_PORT=${2:-8081}
